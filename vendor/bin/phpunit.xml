@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phpunit bootstrap="./../autoload.php">
+    <testsuites>
+        <testsuite name="Finance Tracker Domain Test Suite">
+            <directory>../../tests/Domain</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

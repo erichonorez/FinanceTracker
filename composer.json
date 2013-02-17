@@ -1,0 +1,13 @@
+{
+    "name": "FinanceTracker",
+    "require": {
+        "doctrine/common": "2.3.*",
+        "phpunit/phpunit": "3.7.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "FinanceTracker": "src/",
+            "Svomz": "vendor/svomz/lib"
+        }
+    }
+}
