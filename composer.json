@@ -3,7 +3,8 @@
     "require": {
         "doctrine/common": "2.3.*",
         "phpunit/phpunit": "3.7.*",
-        "doctrine/mongodb-odm": "1.0.*@dev"
+        "doctrine/mongodb-odm": "1.0.*@dev",
+        "pimple/pimple": "dev-trigger"
     },
     "autoload": {
         "psr-0": {

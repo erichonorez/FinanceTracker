@@ -4,5 +4,11 @@
         <testsuite name="Finance Tracker Domain Test Suite">
             <directory>../../tests/Domain</directory>
         </testsuite>
+        <testsuite name="Finance Tracker Application Test Suite">
+            <directory>../../tests/Application</directory>
+        </testsuite>
+        <testsuite name="Finance Tracker Infrastructure Test Suite">
+            <directory>../../tests/Infrastructure</directory>
+        </testsuite>
     </testsuites>
 </phpunit>

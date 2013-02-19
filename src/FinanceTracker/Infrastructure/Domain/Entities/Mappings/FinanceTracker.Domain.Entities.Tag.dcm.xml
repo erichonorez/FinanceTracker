@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<doctrine-mongo-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mongo-mapping"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mongo-mapping
+                    http://doctrine-project.org/schemas/orm/doctrine-mongo-mapping.xsd">
+
+    <document name="FinanceTracker\Domain\Entities\Tag" db="FinanceTracker" collection="tags">
+        <field fieldName="_tagId" id="true" />
+        <field fieldName="_name" type="string" />
+        <indexes>
+            <index unique="true" dropDups="true">
+                <key name="name" order="asc" />
+                <option name="safe" value="true" />
+            </index>
+        </indexes>
+        <reference-many target-document="FinanceTracker\Domain\Entities\Transaction" field="_transactions">
+            <cascade>
+                <all />
+            </cascade>
+        </reference-many>
+    </document>
+</doctrine-mongo-mapping>

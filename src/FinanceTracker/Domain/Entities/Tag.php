@@ -1,5 +1,6 @@
 <?php
 namespace FinanceTracker\Domain\Entities;
+use \Doctrine\Common\Collections\ArrayCollection;
 /**
  * Created by JetBrains PhpStorm.
  * User: Eric
@@ -12,13 +13,21 @@ class Tag
     /**
      * @var
      */
+    protected $_tagId;
+    /**
+     * @var
+     */
     protected $_name;
-
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    protected $_transactions;
     /**
      * @param string $name
      */
     public function __construct($name = "")
     {
+        $this->_transactions = new ArrayCollection();
         if ($name) {
             $this->setName($name);
         }

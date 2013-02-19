@@ -1,5 +1,6 @@
 <?php
 namespace FinanceTracker\Infrastructure\Domain\Repositories\Odm;
+use Doctrine\ODM\MongoDB\DocumentManager;
 use FinanceTracker\Domain\Repositories\FinanceTrackerUnitOfWorkInterface;
 use FinanceTracker\Domain\Repositories\TransactionRepositoryInterface;
 /**

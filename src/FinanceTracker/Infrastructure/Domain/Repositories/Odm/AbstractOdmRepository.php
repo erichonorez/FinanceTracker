@@ -1,6 +1,7 @@
 <?php
 namespace FinanceTracker\Infrastructure\Domain\Repositories\Odm;
 use Svomz\Domain\Repositories\RepositoryInterface;
+use Svomz\Domain\Repositories\EntityNotFoundException;
 use Doctrine\ODM\MongoDB\DocumentManager;
 /**
  * Created by JetBrains PhpStorm.
@@ -31,7 +32,7 @@ abstract class AbstractOdmRepository implements RepositoryInterface
     public function find($id)
     {
         $transaction = $this->_getDocumentManager()
-            ->getRepository(static::$repositoryName)
+            ->getRepository($this->getRepositoryName())
             ->find($id);
         if (!$transaction) {
             throw new EntityNotFoundException();
@@ -75,5 +76,13 @@ abstract class AbstractOdmRepository implements RepositoryInterface
     protected function _getDocumentManager()
     {
         return $this->_documentManager;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRepositoryName()
+    {
+        return static::$repositoryName;
     }
 }

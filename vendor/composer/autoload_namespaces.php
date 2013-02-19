@@ -9,6 +9,7 @@ return array(
     'Symfony\\Component\\Yaml' => $vendorDir . '/symfony/yaml/',
     'Symfony\\Component\\Console\\' => $vendorDir . '/symfony/console/',
     'Svomz' => $baseDir . '/vendor/svomz/lib',
+    'Pimple' => $vendorDir . '/pimple/pimple/lib/',
     'FinanceTracker' => $baseDir . '/src/',
     'Doctrine\\ODM\\MongoDB' => $vendorDir . '/doctrine/mongodb-odm/lib/',
     'Doctrine\\MongoDB' => $vendorDir . '/doctrine/mongodb/lib/',

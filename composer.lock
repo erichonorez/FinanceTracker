@@ -1,5 +1,5 @@
 {
-    "hash": "e7999c64bcdbeed7b5524c4f1bbaf07d",
+    "hash": "728db0beb1338e19185fc49d666cfd6b",
     "packages": [
         {
             "name": "doctrine/common",
@@ -558,6 +558,52 @@
             ]
         },
         {
+            "name": "pimple/pimple",
+            "version": "dev-trigger",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/fabpot/Pimple.git",
+                "reference": "3f31be784adba11b15cfbf5604af8f21d70affa2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fabpot/Pimple/zipball/3f31be784adba11b15cfbf5604af8f21d70affa2",
+                "reference": "3f31be784adba11b15cfbf5604af8f21d70affa2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "time": "2013-02-10 11:42:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Pimple": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Pimple is a simple Dependency Injection Container for PHP 5.3",
+            "homepage": "http://pimple.sensiolabs.org",
+            "keywords": [
+                "container",
+                "dependency injection"
+            ]
+        },
+        {
             "name": "symfony/console",
             "version": "2.2.x-dev",
             "target-dir": "Symfony/Component/Console",
@@ -653,6 +699,7 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "doctrine/mongodb-odm": 20
+        "doctrine/mongodb-odm": 20,
+        "pimple/pimple": 20
     }
 }

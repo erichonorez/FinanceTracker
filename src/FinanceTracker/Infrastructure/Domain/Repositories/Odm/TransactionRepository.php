@@ -11,5 +11,5 @@ use Svomz\Domain\Repositories\EntityNotFoundException;
  */
 class TransactionRepository extends AbstractOdmRepository implements TransactionRepositoryInterface
 {
-    public static $repositoryName = "transactions";
+    public static $repositoryName = 'FinanceTracker\Domain\Entities\Transaction';
 }

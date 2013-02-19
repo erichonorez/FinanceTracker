@@ -4,16 +4,6 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library name="PHARS">
-        <CLASSES>
-          <root url="phar://I:/Users/Eric/Development/PHP/FinanceTracker/composer.phar" />
-        </CLASSES>
-        <SOURCES>
-          <root url="phar://I:/Users/Eric/Development/PHP/FinanceTracker/composer.phar" />
-        </SOURCES>
-      </library>
-    </orderEntry>
   </component>
 </module>
 
