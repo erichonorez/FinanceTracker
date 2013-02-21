@@ -35,13 +35,15 @@ class TransactionRepositoryTest extends \PHPUnit_Framework_TestCase
         $driver = new XmlDriver(array($mappingDir));
         $config->setMetadataDriverImpl($driver);
         //create a new connexion
+        $connection = new Connection();
         $this->_transactionRepository = new TransactionRepository(
             $this->_documentManager =
-                DocumentManager::create(new Connection(), $config)
+                DocumentManager::create($connection, $config)
         );
         $this->_tagRepository = new TagRepository(
             $this->_documentManager
         );
+        $connection->dropDatabase('FinanceTracker');
     }
 
     public function testGetRepositoryNameShouldWork()
@@ -64,7 +66,7 @@ class TransactionRepositoryTest extends \PHPUnit_Framework_TestCase
             'FinanceTracker\Infrastructure\Domain\Repositories\Odm\TransactionRepository',
             $this->_transactionRepository->add($entity)
         );
-        //$this->_documentManager->flush();
+        $this->_documentManager->flush();
     }
 
     /**
@@ -77,6 +79,13 @@ class TransactionRepositoryTest extends \PHPUnit_Framework_TestCase
 
     public function testGetTransactionsShouldWork()
     {
+        $entity = new Transaction();
+        $entity->setDescription('Hello, World')
+            ->setAmount(100);
+        $entity->addTag(new Tag('test'));
+        $this->_transactionRepository->add($entity);
+        $this->_documentManager->flush();
+
         $result = $this->_transactionRepository->search(\DateTime::createFromFormat('d-m-Y', '21-10-1987'));
         $this->assertTrue(count($result) > 0);
 
