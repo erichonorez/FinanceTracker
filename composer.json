@@ -4,7 +4,8 @@
         "doctrine/common": "2.3.*",
         "phpunit/phpunit": "3.7.*",
         "doctrine/mongodb-odm": "1.0.*@dev",
-        "pimple/pimple": "dev-trigger"
+        "pimple/pimple": "1.0.*",
+        "silex/silex": "1.0.*@dev"
     },
     "autoload": {
         "psr-0": {

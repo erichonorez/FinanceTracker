@@ -594,43 +594,41 @@
         "homepage": "http://symfony.com"
     },
     {
-        "name": "doctrine/mongodb-odm",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "name": "symfony/routing",
+        "version": "v2.1.7",
+        "version_normalized": "2.1.7.0",
+        "target-dir": "Symfony/Component/Routing",
         "source": {
             "type": "git",
-            "url": "https://github.com/doctrine/mongodb-odm.git",
-            "reference": "109ee0dff80d36576e00029fb5c15c4fd1f65780"
+            "url": "https://github.com/symfony/Routing",
+            "reference": "v2.1.7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/109ee0dff80d36576e00029fb5c15c4fd1f65780",
-            "reference": "109ee0dff80d36576e00029fb5c15c4fd1f65780",
+            "url": "https://api.github.com/repos/symfony/Routing/zipball/v2.1.7",
+            "reference": "v2.1.7",
             "shasum": ""
         },
         "require": {
-            "doctrine/common": ">=2.2.0,<2.5-dev",
-            "doctrine/mongodb": "1.0.*",
-            "php": ">=5.3.2",
-            "symfony/console": ">=2.0-dev,<2.3-dev"
+            "php": ">=5.3.3"
         },
         "require-dev": {
-            "symfony/yaml": ">=2.0-dev,<2.3-dev"
+            "doctrine/common": ">=2.2,<2.4-dev",
+            "symfony/config": "2.1.*",
+            "symfony/http-kernel": "2.1.*",
+            "symfony/yaml": "2.1.*"
         },
         "suggest": {
-            "symfony/yaml": "Enables the YAML metadata mapping driver"
+            "doctrine/common": ">=2.2,<2.4-dev",
+            "symfony/config": "2.1.*",
+            "symfony/yaml": "2.1.*"
         },
-        "time": "2013-02-13 17:27:17",
+        "time": "2013-01-09 08:51:07",
         "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.0.x-dev"
-            }
-        },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-0": {
-                "Doctrine\\ODM\\MongoDB": "lib/"
+                "Symfony\\Component\\Routing": ""
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -639,54 +637,196 @@
         ],
         "authors": [
             {
-                "name": "Bulat Shakirzyanov",
-                "email": "mallluhuct@gmail.com",
-                "homepage": "http://avalanche123.com"
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
             },
             {
-                "name": "Jonathan H. Wage",
-                "email": "jonwage@gmail.com",
-                "homepage": "http://www.jwage.com/"
-            },
-            {
-                "name": "Kris Wallsmith",
-                "email": "kris.wallsmith@gmail.com",
-                "homepage": "http://kriswallsmith.net/"
-            },
-            {
-                "name": "Jeremy Mikola",
-                "email": "jmikola@gmail.com",
-                "homepage": "http://jmikola.net"
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
             }
         ],
-        "description": "Doctrine MongoDB Object Document Mapper",
-        "homepage": "http://www.doctrine-project.org",
-        "keywords": [
-            "database",
-            "mongodb",
-            "odm",
-            "persistence"
-        ]
+        "description": "Symfony Routing Component",
+        "homepage": "http://symfony.com"
     },
     {
-        "name": "pimple/pimple",
-        "version": "dev-trigger",
-        "version_normalized": "dev-trigger",
+        "name": "symfony/http-foundation",
+        "version": "v2.1.7",
+        "version_normalized": "2.1.7.0",
+        "target-dir": "Symfony/Component/HttpFoundation",
         "source": {
             "type": "git",
-            "url": "git://github.com/fabpot/Pimple.git",
-            "reference": "3f31be784adba11b15cfbf5604af8f21d70affa2"
+            "url": "https://github.com/symfony/HttpFoundation",
+            "reference": "v2.1.7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/fabpot/Pimple/zipball/3f31be784adba11b15cfbf5604af8f21d70affa2",
-            "reference": "3f31be784adba11b15cfbf5604af8f21d70affa2",
+            "url": "https://github.com/symfony/HttpFoundation/archive/v2.1.7.zip",
+            "reference": "v2.1.7",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "time": "2013-01-11 00:31:43",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Symfony\\Component\\HttpFoundation": "",
+                "SessionHandlerInterface": "Symfony/Component/HttpFoundation/Resources/stubs"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony HttpFoundation Component",
+        "homepage": "http://symfony.com"
+    },
+    {
+        "name": "symfony/event-dispatcher",
+        "version": "v2.1.7",
+        "version_normalized": "2.1.7.0",
+        "target-dir": "Symfony/Component/EventDispatcher",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/EventDispatcher",
+            "reference": "v2.1.7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/symfony/EventDispatcher/archive/v2.1.7.zip",
+            "reference": "v2.1.7",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "symfony/dependency-injection": "2.1.*"
+        },
+        "suggest": {
+            "symfony/dependency-injection": "2.1.*",
+            "symfony/http-kernel": "2.1.*"
+        },
+        "time": "2013-01-11 00:31:43",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Symfony\\Component\\EventDispatcher": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony EventDispatcher Component",
+        "homepage": "http://symfony.com"
+    },
+    {
+        "name": "symfony/http-kernel",
+        "version": "v2.1.7",
+        "version_normalized": "2.1.7.0",
+        "target-dir": "Symfony/Component/HttpKernel",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/HttpKernel",
+            "reference": "v2.1.7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/HttpKernel/zipball/v2.1.7",
+            "reference": "v2.1.7",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "symfony/event-dispatcher": "2.1.*",
+            "symfony/http-foundation": "2.1.*"
+        },
+        "require-dev": {
+            "symfony/browser-kit": "2.1.*",
+            "symfony/class-loader": "2.1.*",
+            "symfony/config": "2.1.*",
+            "symfony/console": "2.1.*",
+            "symfony/dependency-injection": "2.1.*",
+            "symfony/finder": "2.1.*",
+            "symfony/process": "2.1.*",
+            "symfony/routing": "2.1.*"
+        },
+        "suggest": {
+            "symfony/browser-kit": "2.1.*",
+            "symfony/class-loader": "2.1.*",
+            "symfony/config": "2.1.*",
+            "symfony/console": "2.1.*",
+            "symfony/dependency-injection": "2.1.*",
+            "symfony/finder": "2.1.*"
+        },
+        "time": "2013-01-17 16:21:47",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Symfony\\Component\\HttpKernel": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony HttpKernel Component",
+        "homepage": "http://symfony.com"
+    },
+    {
+        "name": "pimple/pimple",
+        "version": "v1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "git://github.com/fabpot/Pimple.git",
+            "reference": "v1.0.1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/fabpot/Pimple/archive/v1.0.1.zip",
+            "reference": "v1.0.1",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2013-02-10 11:42:00",
+        "time": "2012-11-11 08:32:34",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -714,6 +854,163 @@
         "keywords": [
             "container",
             "dependency injection"
+        ]
+    },
+    {
+        "name": "silex/silex",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fabpot/Silex.git",
+            "reference": "f683583bff57a943feb40da1f9d8663fff0d7f27"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fabpot/Silex/zipball/f683583bff57a943feb40da1f9d8663fff0d7f27",
+            "reference": "f683583bff57a943feb40da1f9d8663fff0d7f27",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "pimple/pimple": "1.*",
+            "symfony/event-dispatcher": ">=2.1,<2.3-dev",
+            "symfony/http-foundation": ">=2.1,<2.3-dev",
+            "symfony/http-kernel": ">=2.1,<2.3-dev",
+            "symfony/routing": ">=2.1,<2.3-dev"
+        },
+        "require-dev": {
+            "doctrine/dbal": ">=2.2.0,<2.4.0-dev",
+            "swiftmailer/swiftmailer": "4.2.*",
+            "symfony/browser-kit": ">=2.1,<2.3-dev",
+            "symfony/config": ">=2.1,<2.3-dev",
+            "symfony/css-selector": ">=2.1,<2.3-dev",
+            "symfony/dom-crawler": ">=2.1,<2.3-dev",
+            "symfony/finder": ">=2.1,<2.3-dev",
+            "symfony/form": ">=2.1,<2.3-dev",
+            "symfony/locale": ">=2.1,<2.3-dev",
+            "symfony/monolog-bridge": ">=2.1,<2.3-dev",
+            "symfony/options-resolver": ">=2.1,<2.3-dev",
+            "symfony/process": ">=2.1,<2.3-dev",
+            "symfony/security": ">=2.1,<2.3-dev",
+            "symfony/serializer": ">=2.1,<2.3-dev",
+            "symfony/translation": ">=2.1,<2.3-dev",
+            "symfony/twig-bridge": ">=2.1,<2.3-dev",
+            "symfony/validator": ">=2.1,<2.3-dev",
+            "twig/twig": ">=1.8.0,<2.0-dev"
+        },
+        "suggest": {
+            "symfony/browser-kit": ">=2.1,<2.3-dev",
+            "symfony/css-selector": ">=2.1,<2.3-dev",
+            "symfony/dom-crawler": ">=2.1,<2.3-dev"
+        },
+        "time": "2013-02-19 08:41:40",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Silex": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Igor Wiedler",
+                "email": "igor@wiedler.ch",
+                "homepage": "http://wiedler.ch/igor/"
+            }
+        ],
+        "description": "The PHP micro-framework based on the Symfony2 Components",
+        "homepage": "http://silex.sensiolabs.org",
+        "keywords": [
+            "microframework"
+        ]
+    },
+    {
+        "name": "doctrine/mongodb-odm",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/mongodb-odm.git",
+            "reference": "0dd6c2efb33a1d5829d7fcac24258ba6b5b07d9f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/0dd6c2efb33a1d5829d7fcac24258ba6b5b07d9f",
+            "reference": "0dd6c2efb33a1d5829d7fcac24258ba6b5b07d9f",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/common": ">=2.2.0,<2.5-dev",
+            "doctrine/mongodb": "1.0.*",
+            "php": ">=5.3.2",
+            "symfony/console": ">=2.0-dev,<2.3-dev"
+        },
+        "require-dev": {
+            "symfony/yaml": ">=2.0-dev,<2.3-dev"
+        },
+        "suggest": {
+            "symfony/yaml": "Enables the YAML metadata mapping driver"
+        },
+        "time": "2013-02-21 17:22:18",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\ODM\\MongoDB": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Bulat Shakirzyanov",
+                "email": "mallluhuct@gmail.com",
+                "homepage": "http://avalanche123.com"
+            },
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com",
+                "homepage": "http://www.jwage.com/"
+            },
+            {
+                "name": "Kris Wallsmith",
+                "email": "kris.wallsmith@gmail.com",
+                "homepage": "http://kriswallsmith.net/"
+            },
+            {
+                "name": "Jeremy Mikola",
+                "email": "jmikola@gmail.com",
+                "homepage": "http://jmikola.net"
+            }
+        ],
+        "description": "Doctrine MongoDB Object Document Mapper",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "database",
+            "mongodb",
+            "odm",
+            "persistence"
         ]
     }
 ]
