@@ -81,4 +81,12 @@ class Tag
 
         return $value;
     }
+
+    /**
+     * @return string
+     */
+    public function getTagId()
+    {
+        return $this->_tagId;
+    }
 }
