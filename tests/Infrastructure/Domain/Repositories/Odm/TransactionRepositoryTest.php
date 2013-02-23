@@ -76,7 +76,7 @@ class TransactionRepositoryTest extends \PHPUnit_Framework_TestCase
     {
         $this->_transactionRepository->find(1);
     }
-
+    /*
     public function testGetTransactionsShouldWork()
     {
         $entity = new Transaction();
@@ -97,5 +97,5 @@ class TransactionRepositoryTest extends \PHPUnit_Framework_TestCase
 
         $result = $this->_transactionRepository->search(\DateTime::createFromFormat('d-m-Y', '21-10-1987'), null, array($tag), null);
         $this->assertTrue(count($result) == 1);
-    }
+    }*/
 }
