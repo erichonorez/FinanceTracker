@@ -8,7 +8,7 @@ use \Doctrine\Common\Collections\ArrayCollection;
  * Time: 18:19
  * To change this template use File | Settings | File Templates.
  */
-class Tag
+class Tag implements \JsonSerializable
 {
     /**
      * @var
@@ -88,5 +88,13 @@ class Tag
     public function getTagId()
     {
         return $this->_tagId;
+    }
+
+    /**
+     * @return array
+     */
+    public function jsonSerialize()
+    {
+        return $this->getName();
     }
 }

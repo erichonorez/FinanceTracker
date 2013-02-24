@@ -1,14 +1,24 @@
 <?php
-ini_set('display_errors',1);
-error_reporting(E_ALL);
-
 require dirname(dirname(dirname(dirname(__DIR__)))) . '/vendor/autoload.php';
-//create an instance of Silex Application and configure the dependency injection container
-$application = new Silex\Application();
-$application['di'] = new FinanceTracker\Application\ApplicationContainer();
 
-//configure routes
-$application->get('/transactions', function(Symfony\Component\HttpFoundation\Request $request) use ($application) {
+use Silex\Application;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use FinanceTracker\Application\ApplicationContainer;
+use FinanceTracker\Domain\Repositories\Transaction\TransactionSearchCriteria;
+use Svomz\Domain\Repositories\EntityNotFoundException;
+use FinanceTracker\Domain\Entities\Transaction;
+use FinanceTracker\Domain\Entities\Tag;
+
+//create an instance of Silex Application and configure the dependency injection container
+$application = new Application();
+$application['di'] = new ApplicationContainer();
+
+
+/**
+ * GET transactions
+ */
+$application->get('/transactions', function(Request $request) use ($application) {
     // list all transactions
     $params = array(
         'startDate' => $request->query->get('startDate'),
@@ -16,57 +26,77 @@ $application->get('/transactions', function(Symfony\Component\HttpFoundation\Req
         'tags' => $request->query->get('tags'),
         'transactionType' => $request->query->get('transactionType')
     );
-    $criteria = new FinanceTracker\Domain\Repositories\Transaction\TransactionSearchCriteria($params);
+    $criteria = new TransactionSearchCriteria($params);
+
     return $application->json(
-        $application['di']['transactionFinder']->find($criteria)->toArray()
+        $application['di']['transactionFinder']
+            ->find($criteria)
+            ->toArray()
     );
 });
+/**
+ * GET a transaction
+ */
 $application->get('/transactions/{id}', function($id) use ($application) {
     // return transaction identified by the given id
     return $application->json(
-        $application['di']['unitOfWork']->getTransactionRepository()->find($id)
+        $application['di']['unitOfWork']
+            ->getTransactionRepository()
+            ->find($id)
     );
 });
-$application->post('/transactions', function(Symfony\Component\HttpFoundation\Request $request) use ($application) {
-    // create an new transaction
-    $values = json_decode($request->getContent());
-    $transaction = new FinanceTracker\Domain\Entities\Transaction();
-    $transaction->setDescription($values->description);
-    $transaction->setDate($values->date);
-    $transaction->setAmount($values->amount);
-    foreach ($values->tags as $tag) {
-        $tag = new FinanceTracker\Domain\Entities\Tag();
-        $transaction->addTag($tag);
-    }
-    $uow = $application['di']['unitOfWork'];
-    $uow->getTransactionRepository()->add($transaction);
-    $uow->commit();
-    return $application->json('ok');
+/**
+ * CREATE a transaction
+ */
+$application->post('/transactions', function(Request $request) use ($application) {
+    $factory = $application['di']['transactionFactory'];
+    $transaction = $factory->fromObject(json_decode($request->getContent()));
+
+    $unitOfWork = $application['di']['unitOfWork'];
+    $unitOfWork->getTransactionRepository()->add($transaction);
+    $unitOfWork->commit();
+
+    return new Response($transaction->getTransactionId(), 201);
 });
-$application->put('/transactions/{id}', function($id) use ($application) {
-    $uow = $application['di']['unitOfWork'];
-    $transaction = $uow->getTransactionRepository()->find($id);
-    $transaction = new FinanceTracker\Domain\Entities\Transaction();
-    $transaction->setDescription($values->description);
-    $transaction->setDate($values->date);
-    $transaction->setAmount($values->amount);
-    foreach ($values->tags as $tag) {
-        $tag = new FinanceTracker\Domain\Entities\Tag();
-        $transaction->addTag($tag);
-        if (!$transaction->hasTag($tag)) {
-            $transaction->addTag($tag);
-        }
-    }
-    $uow->commit();
-    return $application->json('ok');
+/**
+ * UPDATE a transaction
+ */
+$application->put('/transactions/{id}', function(Request $request, $id) use ($application) {
+    $unitOfWork = $application['di']['unitOfWork'];
+    $persistedTransaction = $unitOfWork->getTransactionRepository()->find($id);
+
+    $factory = $application['di']['transactionFactory'];
+    $transaction = $factory->fromObject(json_decode($request->getContent()));
+
+    $service = $application['di']['transactionService'];
+    $service->synchronize($persistedTransaction, $transaction);
+
+    $unitOfWork->commit();
+    return new Response($transaction->getTransactionId(), 200);
 });
-$application->delete('/transactions/{id}', function($id) use ($application) {
-   // remove a transaction
-    $transaction = $application['di']['unitOfWork']->getTransactionRepository()->find($id);
-    $application['di']['unitOfWork']->getTransactionRepository()->remove($transaction);
-    return $application->json(
-        'ok'
-    );
+/**
+ * DELETE a transaction
+ */
+$application->delete('/transactions/{id}', function(Request $request, $id) use ($application) {
+    // remove a transaction
+    $unitOfWork = $application['di']['unitOfWork'];
+
+    $transaction = $unitOfWork->getTransactionRepository()
+        ->find($id);
+
+    $unitOfWork->getTransactionRepository()
+        ->remove($transaction);
+
+    $unitOfWork->commit();
+    return new Response('', 204);
+});
+
+$application->error(function (EntityNotFoundException $exception) {
+    return new Response('', 404);
+});
+
+$application->error(function (Exception $exception) {
+    return new Response('', 500);
 });
 
 //run the application

@@ -11,4 +11,8 @@ interface FinanceTrackerUnitOfWorkInterface extends UnitOfWorkInterface
      * @return TransactionRepositoryInterface
      */
     public function getTransactionRepository();
+    /**
+     * @return TagRepositoryInterface;
+     */
+    public function getTagRepository();
 }

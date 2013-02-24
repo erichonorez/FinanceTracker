@@ -8,7 +8,7 @@ use \Doctrine\Common\Collections\ArrayCollection;
  * Time: 17:58
  * To change this template use File | Settings | File Templates.
  */
-class Transaction
+class Transaction implements \JsonSerializable
 {
     /**
      * @var int
@@ -115,6 +115,36 @@ class Transaction
     }
 
     /**
+     * @return boolean
+     */
+    public function isTagged($tagName)
+    {
+        foreach ($this->_tags as $tag) {
+            if ($tag->getName() == $tagName) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     */
+    public function untag($tagName)
+    {
+        $tagToRemove = null;
+        foreach ($this->_tags as $tag) {
+            if ($tag->getName() == $tagName) {
+                $tagToRemove = $tag;
+                break;
+            }
+        }
+        if ($tagToRemove) {
+            $this->removeTag($tagToRemove);
+        }
+        return $this;
+    }
+
+    /**
      * @param  $amount
      */
     public function setAmount($amount)
@@ -145,5 +175,18 @@ class Transaction
     public function isIncome()
     {
         return $this->getAmount() > 0;
+    }
+
+    /**
+     * @return array
+     */
+    public function jsonSerialize()
+    {
+        return [
+            "transactionId" => $this->getTransactionId(),
+            "description" => $this->getDescription(),
+            "amount" => $this->getAmount(),
+            "tags" => $this->getTags()->toArray()
+        ];
     }
 }

@@ -6,7 +6,10 @@ use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ODM\MongoDB\Mapping\Driver\XmlDriver;
 use FinanceTracker\Infrastructure\Domain\Repositories\Odm\FinanceTrackerUnitOfWork;
 use FinanceTracker\Infrastructure\Domain\Repositories\Odm\TransactionRepository;
+use FinanceTracker\Infrastructure\Domain\Repositories\Odm\TagRepository;
 use FinanceTracker\Infrastructure\Domain\Repositories\Odm\Transaction\TransactionFinder;
+use FinanceTracker\Domain\Factories\TransactionFactory;
+use FinanceTracker\Domain\Services\TransactionService;
 /**
  * The FinanceTracker Dependency Injection Container
  */
@@ -43,15 +46,29 @@ class ApplicationContainer extends \Pimple
             return new TransactionRepository($container['documentManager']);
         });
 
+        $this['tagRepository'] = $this->share(function($container) {
+            return new TagRepository($container['documentManager']);
+        });
+
+
         $this['unitOfWork'] = $this->share(function($container) {
             return new FinanceTrackerUnitOfWork(
                 $container['documentManager'],
-                $container['transactionRepository']
+                $container['transactionRepository'],
+                $container['tagRepository']
             );
         });
 
         $this['transactionFinder'] = $this->share(function($container) {
            return new TransactionFinder($this['documentManager']);
+        });
+
+        $this['transactionFactory'] = $this->share(function($container) {
+            return new TransactionFactory($this['unitOfWork']);
+        });
+
+        $this['transactionService'] = $this->share(function ($container) {
+            return new TransactionService();
         });
     }
 

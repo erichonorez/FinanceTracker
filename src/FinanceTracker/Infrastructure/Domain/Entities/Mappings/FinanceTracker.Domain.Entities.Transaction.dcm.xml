@@ -12,7 +12,7 @@
         <field fieldName="_date" type="date" />
         <reference-many target-document="FinanceTracker\Domain\Entities\Tag" field="_tags">
             <cascade>
-                <all />
+                <persist/>
             </cascade>
         </reference-many>
     </document>
