@@ -1,0 +1,43 @@
+body {
+    background-color: #eeeeee;
+    color: #333333;
+}
+
+h2 {
+    font-size: 18px;
+    margin-top: 0px;
+}
+
+#app-container {
+    background-color: #fff;
+    padding: 20px;
+}
+
+#app-container > .row {
+    margin: 0px;
+}
+
+#transaction-list-container > li {
+    list-style: none;
+    padding: 10px;
+    border-bottom: #eeeeee 1px solid;
+}
+
+#transaction-filter-container {
+    padding-left: 30px;
+}
+
+.transaction-description {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.transaction-date {
+    font-style: italic;
+    font-size: 12px;
+}
+
+#transaction-form-container {
+    border-left: #eeeeee 1px solid;
+    padding-left: 20px;
+}

@@ -186,6 +186,7 @@ class Transaction implements \JsonSerializable
             "transactionId" => $this->getTransactionId(),
             "description" => $this->getDescription(),
             "amount" => $this->getAmount(),
+            "date" => $this->_date->format('d-m-Y'),
             "tags" => $this->getTags()->toArray()
         ];
     }

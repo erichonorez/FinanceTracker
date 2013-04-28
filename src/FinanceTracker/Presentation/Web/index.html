@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Overview - Finance Tacker</title>
+    <!--  styles -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="/assets/css/financetracker.css" />
+    <!--  /styles -->
+</head>
+<body>
+    <div id="app-container" class="container">
+        <div class="row">
+            <div class="app-content span8">
+                <div id="transaction-filter-container"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="transation-summary-containter"></div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <h2>Details for the period</h2>
+                        <ul id="transaction-list-container" class="span8"></ul>
+                    </div>
+                </div>
+            </div>
+            <div id="transaction-form-container" class="span3"></div>
+        </div>
+    </div>
+    <!-- templates -->
+    <script type="text/html" id="tpl-transactions-list-item">
+        <div class="transaction">
+            <div>
+                <span class="transaction-description">
+                    <%= description %>
+                </span>
+                <span class="transaction-date">
+                    <%= date %>
+                </span>
+                <%
+                    var className = isExpense ? 'expense' : 'income';
+                %>
+                <span class="transaction-amount pull-right <%= className %>">
+                    <%= amount %>
+                </span>
+            </div>
+            <% for (var i = 0; i < tags.length; i++) { %>
+            <span class="transaction-tag label label-info">
+                <%= tags[i] %>
+            </span>
+            <% } %>
+        </div>
+    </script>
+    <script type="text/html" id="tpl-transactions-form">
+        <h2>Add a new transaction</h2>
+        <form id="transaction-form" class="form">
+            <input type="text" name="description" required="required" placeholder="What have you bought?" />
+            <input type="number" name="amount" required="required" placeholder="How much?"/>
+            <input type="date" name="date" placeholder="When?"/>
+            <input type="text" name="tags" placeholder="Tag it!"/>
+            <input type="submit" name="Add" value="Add" class="btn btn-success"/>
+        </form>
+    </script>
+    <script type="text/javascript" id="tpl-transactions-filter">
+        <form id="transaction-filter" class="form-inline">
+            <label>from:</label>
+            <input type="date" name="dateFrom" class="span2">
+            <label>to:</label>
+            <input type="date" name="dateTo" class="span2">
+            <input type="text" name="tags" placeholder="tags" />
+            <input type="submit" name="search" value="Search" class="btn" />
+        </form>
+    </script>
+    <script type="text/javascript" id="tpl-transactions-summary">
+        <h2>Summary for the period</h2>
+        <p class="span3">Total income: 100</p>
+        <p class="span3">Total expense: 100</p>
+    </script>
+    <!-- /templates -->
+    <!-- scripts -->
+    <script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/vendor/underscore-min.js"></script>
+    <script type="text/javascript" src="/assets/js/vendor/backbone-min.js"></script>
+    <script type="text/javascript" src="/assets/js/src/models/transaction-models.js"></script>
+    <script type="text/javascript" src="/assets/js/src/views/transaction-views.js"></script>
+    <script type="text/javascript" src="/assets/js/src/util.js"></script>
+    <script type="text/javascript" src="/assets/js/src/application.js"></script>
+    <!-- /scripts -->
+</body>
+</html>

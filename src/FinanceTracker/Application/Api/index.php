@@ -13,7 +13,7 @@ use FinanceTracker\Domain\Entities\Tag;
 //create an instance of Silex Application and configure the dependency injection container
 $application = new Application();
 $application['di'] = new ApplicationContainer();
-
+$application['debug'] = true;
 
 /**
  * GET transactions
@@ -29,9 +29,9 @@ $application->get('/transactions', function(Request $request) use ($application)
     $criteria = new TransactionSearchCriteria($params);
 
     return $application->json(
-        $application['di']['transactionFinder']
+        array_values($application['di']['transactionFinder']
             ->find($criteria)
-            ->toArray()
+            ->toArray())
     );
 });
 /**
@@ -95,9 +95,9 @@ $application->error(function (EntityNotFoundException $exception) {
     return new Response('', 404);
 });
 
-$application->error(function (Exception $exception) {
+/*$application->error(function (Exception $exception) {
     return new Response('', 500);
-});
+});*/
 
 //run the application
 $application->run();
